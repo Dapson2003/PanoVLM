@@ -31,6 +31,9 @@ docker build -t panovlm .
 3. Run the docker image
 ```bash
 docker run -it -v /F:/Github2/PanoVLM:/PanoVLM panovlm
+
+docker run -it -v "F:\Github2\PanoVLM:/PanoVLM" -v "F:\roomfolder:/roomfolder" panovlm
+
 ```
 4. Compile the code
 ```bash
