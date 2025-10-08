@@ -11,9 +11,13 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <cfloat>      // FLT_MAX
 #include <glog/logging.h>
-#include <optional>
-#include <variant>
+
+// PCL / Eigen used in function signatures
+#include <pcl/point_cloud.h>
+#include <pcl/point_types.h>
+#include <Eigen/Dense>
 
 // CGAL: depth-map initialization
 #include <CGAL/Simple_cartesian.h>
@@ -21,11 +25,19 @@
 #include <CGAL/Triangulation_vertex_base_with_info_2.h>
 #include <CGAL/AABB_tree.h>
 
-//#include <CGAL/AABB_traits_3.h>
-//#include <CGAL/AABB_triangle_primitive_3.h>
-#include <boost/optional.hpp>
+// Optional/variant (you use std::optional/std::variant in the .cpp)
+#include <optional>
+#include <variant>
+
+// AABB traits / triangle primitive
 #include <CGAL/AABB_traits.h>
 #include <CGAL/AABB_triangle_primitive.h>
+
+// Explicit geometry headers you use in the .cpp
+#include <CGAL/Point_3.h>
+#include <CGAL/Segment_3.h>
+#include <CGAL/Triangle_3.h>
+#include <CGAL/Ray_3.h>
 
 #include "Visualization.h"
 
@@ -52,7 +64,6 @@ std::vector<int> ArgMax(const cv::Mat& src, int axis, float target_value = FLT_M
  */  
 cv::Mat DepthCompletion(const cv::Mat& sparse_depth, const float max_depth);
 
-
 /**
  * @description: 深度图补全算法，具体做法是把激光雷达点云进行 Delaunay 三角化，然后投影到图像平面
  * 得到每个像素的深度值。该方法受启发自 RPV-SLAM: Range-augumented Panoramic Visual SLAM for Mobile Mapping 
@@ -64,8 +75,12 @@ cv::Mat DepthCompletion(const cv::Mat& sparse_depth, const float max_depth);
  * @param T_cl 激光雷达到相机的变换
  * @return 补全后的深度图
 */
-cv::Mat DepthCompletionDelaunay(const int& rows, const int& cols, const pcl::PointCloud<pcl::PointXYZI>& cloud, const Eigen::Matrix4d& T_cl);
+cv::Mat DepthCompletionDelaunay(const int& rows, const int& cols,
+                                const pcl::PointCloud<pcl::PointXYZI>& cloud,
+                                const Eigen::Matrix4d& T_cl);
 
-cv::Mat GenerateLidarMask(const int& rows, const int& cols, const pcl::PointCloud<pcl::PointXYZI>& cloud, const Eigen::Matrix4d& T_cl);
+cv::Mat GenerateLidarMask(const int& rows, const int& cols,
+                          const pcl::PointCloud<pcl::PointXYZI>& cloud,
+                          const Eigen::Matrix4d& T_cl);
 
-#endif
+#endif // _DEPTH_COMPLETION_H_
