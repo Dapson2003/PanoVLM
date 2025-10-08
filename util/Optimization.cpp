@@ -616,15 +616,15 @@ ceres::Solver::Options SetOptionsSfM(const int num_thread)
     options.linear_solver_type = ceres::DENSE_SCHUR;
     options.preconditioner_type = ceres::JACOBI;
     // If Sparse linear solver are available
-    // Descending priority order by efficiency (SUITE_SPARSE > CX_SPARSE > EIGEN_SPARSE)
+    // Descending priority order by efficiency (SUITE_SPARSE > NO_SPARSE > EIGEN_SPARSE)
     if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::SUITE_SPARSE))
     {
         options.sparse_linear_algebra_library_type = ceres::SUITE_SPARSE;
         options.linear_solver_type = ceres::SPARSE_SCHUR;
     }
-    else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::CX_SPARSE))
+    else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::NO_SPARSE))
     {
-        options.sparse_linear_algebra_library_type = ceres::CX_SPARSE;
+        options.sparse_linear_algebra_library_type = ceres::NO_SPARSE;
         options.linear_solver_type = ceres::SPARSE_SCHUR;
     }
     else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::EIGEN_SPARSE))

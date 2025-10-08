@@ -133,9 +133,9 @@ bool TranslationAveragingL2(const std::vector<MatchPair>& image_pairs, eigen_vec
         options.sparse_linear_algebra_library_type = ceres::SUITE_SPARSE;
         options.linear_solver_type = ceres::SPARSE_NORMAL_CHOLESKY;
     }
-    else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::CX_SPARSE))
+    else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::NO_SPARSE))
     {
-        options.sparse_linear_algebra_library_type = ceres::CX_SPARSE;
+        options.sparse_linear_algebra_library_type = ceres::NO_SPARSE;
         options.linear_solver_type = ceres::SPARSE_NORMAL_CHOLESKY;
     }
     else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::EIGEN_SPARSE))
@@ -237,9 +237,9 @@ bool TranslationAveragingL2Chordal(const std::vector<MatchPair>& image_pairs, co
         options.sparse_linear_algebra_library_type = ceres::SUITE_SPARSE;
         options.linear_solver_type = ceres::SPARSE_NORMAL_CHOLESKY;
     }
-    else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::CX_SPARSE))
+    else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::NO_SPARSE))
     {
-        options.sparse_linear_algebra_library_type = ceres::CX_SPARSE;
+        options.sparse_linear_algebra_library_type = ceres::NO_SPARSE;
         options.linear_solver_type = ceres::SPARSE_NORMAL_CHOLESKY;
     }
     else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::EIGEN_SPARSE))
@@ -588,9 +588,9 @@ bool TranslationAveragingLUD(std::vector<MatchPair>& image_pairs, const std::vec
             options.sparse_linear_algebra_library_type = ceres::SUITE_SPARSE;
             options.linear_solver_type = ceres::SPARSE_NORMAL_CHOLESKY;
         }
-        else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::CX_SPARSE))
+        else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::NO_SPARSE))
         {
-            options.sparse_linear_algebra_library_type = ceres::CX_SPARSE;
+            options.sparse_linear_algebra_library_type = ceres::NO_SPARSE;
             options.linear_solver_type = ceres::SPARSE_NORMAL_CHOLESKY;
         }
         else if (ceres::IsSparseLinearAlgebraLibraryTypeAvailable(ceres::EIGEN_SPARSE))

@@ -430,13 +430,19 @@ cv::Mat DepthCompletionDelaunay(const int& rows, const int& cols, const pcl::Poi
             cv::Point3f ray = eq.ImageToCam(cv::Point2f(x, y));
             Ray view_ray(Point3(0, 0, 0), Point3(ray.x, ray.y, ray.z));
             // 计算射线与AABB树的交点
-            Ray_intersection intersection = aabb_tree.first_intersection(view_ray);
-            if(intersection)
-            {
-                if(boost::get<Point3>(&(intersection->first)))
-                {
-                    const Point3* p =  boost::get<Point3>(&(intersection->first) );
-                    depth_map.at<float>(y, x) = sqrt(Square(p->x()) + Square(p->y()) + Square(p->z()));
+            auto intersection = aabb_tree.first_intersection(view_ray); // std::optional<...>
+            if (intersection) {
+                const auto& hit = intersection->first; // std::variant<Point3, Segment3>
+                if (const Point3* p = std::get_if<Point3>(&hit)) {
+                    depth_map.at<float>(y, x) = std::sqrt(Square(p->x()) + Square(p->y()) + Square(p->z()));
+                } else if (const Segment3* s = std::get_if<Segment3>(&hit)) {
+                    // Rare case: intersection returns a segment (edge hit). Use the nearer endpoint.
+                    const Point3& a = s->source();
+                    const Point3& b = s->target();
+                    const double da2 = a.x()*a.x() + a.y()*a.y() + a.z()*a.z();
+                    const double db2 = b.x()*b.x() + b.y()*b.y() + b.z()*b.z();
+                    const double d = std::sqrt(std::min(da2, db2));
+                    depth_map.at<float>(y, x) = static_cast<float>(d);
                 }
             }
         }

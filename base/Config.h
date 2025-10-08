@@ -10,7 +10,7 @@
 #include <glog/logging.h>
 #include <Eigen/Geometry>
 #include <omp.h>
-
+#include <fstream> 
 #include "common.h"
 
 using namespace boost::program_options;
@@ -233,6 +233,8 @@ public:
         ;
 
         boost::program_options::variables_map vm;
+
+
         std::ifstream input(file_path);
         if(!input)
         {

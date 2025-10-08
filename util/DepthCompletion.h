@@ -18,6 +18,10 @@
 #include <CGAL/Delaunay_triangulation_2.h>
 #include <CGAL/Triangulation_vertex_base_with_info_2.h>
 #include <CGAL/AABB_tree.h>
+
+//#include <CGAL/AABB_traits_3.h>
+//#include <CGAL/AABB_triangle_primitive_3.h>
+#include <boost/optional.hpp>
 #include <CGAL/AABB_traits.h>
 #include <CGAL/AABB_triangle_primitive.h>
 
