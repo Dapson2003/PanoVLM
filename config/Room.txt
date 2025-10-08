@@ -1,25 +1,25 @@
 # 图像文件目录
-image_path = /data2/tdt/Room/images/  
+image_path = /roomfolder/Room/images/  
 # 雷达文件目录 
-lidar_path = /data2/tdt/Room/lidar/    
+lidar_path = /roomfolder/Room/lidar/    
 # 深度图文件目录，如果这个目录里深度图数量和图像文件数目不符合，那么之后就要更新这个目录里的深度图
-depth_path = /data2/tdt/Room/depth/ 
+depth_path = /roomfolder/Room/depth/ 
 # 保存frame文件的目录，如果这个目录里frame数量和图像文件数目不符，之后要更新这个目录里的文件   
-frame_path = /data2/tdt/Room/frame/
+frame_path = /roomfolder/Room/frame/
 # 保存图像匹配对的目录，可以把图像的匹配关系保存在这里，方便下一次使用
-match_pair_path = /data2/tdt/Room/image_pair/
+match_pair_path = /roomfolder/Room/image_pair/
 # 保存匹配对的目录，这个目录保存的是经过完整的SfM之后，依然保留下来的匹配对，这个匹配对可以用于后面的联合优化 joint optimization
-match_pair_joint_path = /data2/tdt/Room/image_pair_joint/
+match_pair_joint_path = /roomfolder/Room/image_pair_joint/
 # 保存图像直线目录
-image_line_path = /data2/tdt/Room/image_line/
+image_line_path = /roomfolder/Room/image_line/
 # 保存经过去畸变的点云
-lidar_path_undistort = /data2/tdt/Room/lidar_undis/
+lidar_path_undistort = /roomfolder/Room/lidar_undis/
 # 保存MVS深度图路径
-mvs_data_path =/data2/tdt/Room/mvs/
+mvs_data_path =/roomfolder/Room/mvs/
 # 保存运行结果的目录
-result_path = /data2/tdt/Room/result/
+result_path = /roomfolder/Room/result/
 # mask路径
-mask_path = /data2/tdt/Room/mask.jpg
+mask_path = /roomfolder/Room/mask.jpg
 
 num_threads = 25
 data_gap_time = 0.1
