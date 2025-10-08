@@ -12,6 +12,8 @@
 #include <string>
 #include <iostream>
 #include <glog/logging.h>
+#include <optional>
+#include <variant>
 
 // CGAL: depth-map initialization
 #include <CGAL/Simple_cartesian.h>

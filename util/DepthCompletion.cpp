@@ -374,7 +374,7 @@ cv::Mat DepthCompletionDelaunay(const int& rows, const int& cols, const pcl::Poi
     typedef CGAL::AABB_triangle_primitive<kernel_t, std::vector<Triangle_3>::iterator> Primitive;
     typedef CGAL::AABB_tree<CGAL::AABB_traits<kernel_t, Primitive>> Tree;
     typedef Tree::Primitive_id Primitive_id;
-    typedef boost::optional<Tree::Intersection_and_primitive_id<Ray>::Type> Ray_intersection;
+    typedef std::optional<Tree::Intersection_and_primitive_id<Ray>::Type> Ray_intersection;
 
 
     pcl::PointCloud<pcl::PointXYZI> cloud_trans;
